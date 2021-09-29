@@ -1,65 +1,32 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import '@babel/polyfill'
-import 'api/resource'
-import router from 'router/router'
-import App from 'pages/App.vue'
-import store from 'store/store'
-import { connect } from './util/ws'
-import 'vuetify/dist/vuetify.min.css'
-import * as Sentry from '@sentry/browser'
-import * as Integrations from '@sentry/integrations'
+import App from './App.vue';
+import { router } from './router';
+import store from './store';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import VeeValidate from 'vee-validate';
+import Vue from 'vue';
+import vuetify from './plugins/vuetify' // path to vuetify export
+import 'vuetify/dist/vuetify.min.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faHome,
+    faUser,
+    faUserPlus,
+    faSignInAlt,
+    faSignOutAlt
+} from '@fortawesome/free-solid-svg-icons';
 
+library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
 
+Vue.config.productionTip = false;
 
-Vue.http.interceptors.push(function(request,next){
-    const token = this.$store.state.token;
-    // modifying request headers
-    if(token) {
-        request.headers.set('X-CSRF-TOKEN', token);
-        request.headers.set('Authorization', 'Bearer ' + token);
-    }
-
-    next();
-})
-// Vue.prototype.$http.interceptors.request.use(function(config) {
-//     const token = this.$store.state.token;
-//     if(token) {
-//         config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-// }, function(err) {
-//     return Promise.reject(err);
-// });
-
-Sentry.init({
-    dsn: 'https://8db0384f25e140598d11d846c2d5d83b@sentry.io/1447355',
-    integrations: [
-        new Integrations.Vue({
-            Vue,
-            attachProps: true,
-        }),
-    ],
-})
-
-Sentry.configureScope(scope =>
-    scope.setUser({
-        id: profile && profile.id,
-        username: profile && profile.name
-    })
-)
-
-if (profile) {
-    connect()
-}
-
-
-
-Vue.use(Vuetify)
-
+Vue.use(VeeValidate);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+// Vue.use(Vuetify)
 new Vue({
-    el: '#app',
-    store,
+    vuetify,
     router,
-    render: a => a(App)
-})
+    store,
+    render: h => h(App)
+}).$mount('#app');

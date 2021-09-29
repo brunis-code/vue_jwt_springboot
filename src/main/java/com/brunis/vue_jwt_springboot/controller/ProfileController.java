@@ -1,4 +1,4 @@
-
+package com.brunis.vue_jwt_springboot.controller;
 
 import com.brunis.vue_jwt_springboot.model.User;
 import com.brunis.vue_jwt_springboot.model.UserSubscription;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+//@RestController
 @RequestMapping("profile")
 public class ProfileController {
     private final ProfileService profileService;
