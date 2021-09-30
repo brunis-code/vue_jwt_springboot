@@ -1,10 +1,9 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:9000/api/auth/';
+import Vue from 'vue';
+const API_URL = '/api/auth/';
 
 class AuthService {
   login(user) {
-    return axios
+    return Vue.prototype.$http
       .post(API_URL + 'signin', {
         username: user.username,
         password: user.password
@@ -23,7 +22,7 @@ class AuthService {
   }
 
   register(user) {
-    return axios.post(API_URL + 'signup', {
+    return Vue.prototype.$http.post(API_URL + 'signup', {
       username: user.username,
       email: user.email,
       password: user.password

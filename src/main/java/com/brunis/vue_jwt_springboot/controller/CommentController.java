@@ -1,4 +1,4 @@
-
+package com.brunis.vue_jwt_springboot.controller;
 
 import com.brunis.vue_jwt_springboot.model.Comment;
 import com.brunis.vue_jwt_springboot.model.User;

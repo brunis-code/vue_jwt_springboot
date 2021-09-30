@@ -16,12 +16,15 @@ import {
     faSignInAlt,
     faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
+import {Axios} from './services/axios'
+
 
 library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
 
 Vue.config.productionTip = false;
-
+Vue.prototype.$http = Axios;
 Vue.use(VeeValidate);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // Vue.use(Vuetify)
 new Vue({

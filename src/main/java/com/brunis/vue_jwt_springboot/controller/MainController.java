@@ -1,5 +1,6 @@
 package com.brunis.vue_jwt_springboot.controller;
 
+import com.brunis.vue_jwt_springboot.model.User;
 import com.brunis.vue_jwt_springboot.model.Views;
 import com.brunis.vue_jwt_springboot.repo.UserRepo;
 import com.brunis.vue_jwt_springboot.service.MessageService;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.jwt.Jwt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +56,7 @@ public class MainController {
     ) throws JsonProcessingException {
         HashMap<Object, Object> data = new HashMap<>();
 
+
         if (user != null) {
             Collections.singletonMap("principal", user);
             System.out.println(Collections.singletonMap("principal", user));
@@ -74,9 +77,9 @@ public class MainController {
 //            model.addAttribute("messages", "[]");
 //            model.addAttribute("profile", "null");
         }
-        model.addAttribute("messages", "[]");
-        model.addAttribute("profile", "null");
-        model.addAttribute("frontendData", data);
+//        model.addAttribute("messages", "[]");
+//        model.addAttribute("profile", "null");
+//        model.addAttribute("frontendData", data);
         model.addAttribute("isDevMode", "dev".equals(profile));
 
         return "index";

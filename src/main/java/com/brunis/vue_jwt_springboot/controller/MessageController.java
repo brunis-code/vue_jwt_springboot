@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-//@RestController
+@RestController
 @RequestMapping("message")
 public class MessageController {
     public static final int MESSAGES_PER_PAGE = 3;

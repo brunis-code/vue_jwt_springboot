@@ -1,9 +1,9 @@
 <template>
-  <v-content>
+  <v-container>
     <header>
       <h3>{{content}}</h3>
     </header>
-  </v-content>
+  </v-container>
 </template>
 
 <script>
