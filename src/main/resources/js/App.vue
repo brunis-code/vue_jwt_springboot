@@ -6,7 +6,7 @@
         <v-app-bar app>
             <v-toolbar-title>BrunisCode</v-toolbar-title>
 
-            <v-btn flat
+            <v-btn text
                    v-if="currentUser"
                    :disabled="$route.path === '/'|| $route.path === '/home'"
                    @click="$router.push('/')"
@@ -15,7 +15,7 @@
                 <font-awesome-icon icon="home"/>
                 Home
             </v-btn>
-            <v-btn flat
+            <v-btn text
                    v-if="showAdminBoard"
                    :disabled="$route.path === '/admin'"
                    @click="$router.push('/admin')"
@@ -23,7 +23,7 @@
             >
                 Admin Board
             </v-btn>
-            <v-btn flat
+            <v-btn text
                    v-if="showModeratorBoard"
                    :disabled="$route.path === '/mod'"
                    @click="$router.push('/mod')"
@@ -31,7 +31,7 @@
             >
                 Moderator Board
             </v-btn>
-            <v-btn flat
+            <v-btn text
                    v-if="currentUser"
                    :disabled="$route.path === '/user'"
                    @click="$router.push('/user')"
@@ -41,7 +41,7 @@
             </v-btn>
             <v-spacer></v-spacer>
             <div v-if="!currentUser">
-                <v-btn flat
+                <v-btn text
                        :disabled="$route.path === '/register'"
                        @click="$router.push('/register')"
 
@@ -59,7 +59,7 @@
                 </v-btn>
             </div>
             <div v-else>
-                <v-btn flat
+                <v-btn text
                        :disabled="$route.path === '/profile'"
                        @click="$router.push('/profile')"
 
@@ -67,7 +67,7 @@
                     <font-awesome-icon icon="user"/>
                     {{ currentUser.username }}
                 </v-btn>
-                <v-btn flat
+                <v-btn text
                        @click="logOut"
 
                 >
